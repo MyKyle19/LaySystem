@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>五邑大学实验室安全检查系统</title>
+<link rel="stylesheet" type="text/css" href="css/DengLustyles.css">
+<style type="text/css">
+body,td,th { font-family: "Source Sans Pro", sans-serif; }
+</style>
+</head>
+<body>
+<div class="wrapper">
+	<div class="container">
+		<img  id="WuYiLoGo" src="img/五邑大学图标.png" width="110px" height="110px" />
+		<h2>五邑大学实验室安全检查系统</h2>
+		<form class="form">
+			<input type="text"  id="username" placeholder="请输入您的教师账号">
+			<input type="password" id="password" placeholder="请输入您的密码">
+			<button type="submit" id="login-button">登陆</button>
+		</form>
+	</div>
+	
+	<ul class="bg-bubbles">
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+	
+</div>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script type="text/javascript">
+	
+     var httpurl = "http://47.100.44.172:8080/LabSystem/user/login";
+$('#login-button').click(function(event){
+
+          var username = $("#username").val();//取值
+					var password = $("#password").val();
+					if(!username){
+						alert("用户名必填!");
+						$("#username").focus();//获取焦点
+						return ;
+					}
+					if(!password){
+						alert("密码必填!");
+						$("#password").focus();//获取焦点
+						return ;
+					
+					
+//					var xhr = new XMLHttpRequest();
+//					
+//						
+//					$.ajax({
+//						url:'http://47.100.44.172:8080/LabSystem/user/login?username='+ username + '&password=' + password,
+//						dataType:'json',
+//						contentType:'application/json',
+//						headers:{'Content-Type','application/json'},
+//						xhrFields: { withCredentials:true},
+//						data:JSON.stringify({"username":sam,"password":samsion}),
+//						success: function(data,start){
+//			              //成功回调，即接口访问成功后执行，data为返回的数据对象
+//							//console.log(data)
+//							  console.log(data,start);
+//			             //window.location.href= 'http://baidu.com'
+//			
+//			            },
+//			            error: function(xhr,start){
+//			            	//window.location.href= 'http://baidu.com'
+//			              //错误回调，即接口访问出现错误后执行，err为错误信息
+//							  console.log(xhr,start);
+//			              
+//			            }
+//								})
+//			          }
+          var url = 'http://47.100.44.172:8080/LabSystem/user/login?username='+ username + '&password=' + password;
+          var param = {username: username, password: password}; 
+          var setting = {
+            type: 'POST',
+            url: url,
+            data: {
+              username,
+              password
+            },
+            success: function(data){
+              //成功回调，即接口访问成功后执行，data为返回的数据对象
+				//console.log(data)
+             //window.location.href= 'http://baidu.com'
+
+            },
+            error: function(err){
+            	window.location.href= 'http://baidu.com'
+              //错误回调，即接口访问出现错误后执行，err为错误信息
+
+              
+            }
+          } 
+          $.ajax(setting);
+
+
+
+  event.preventDefault();
+	
+    
+	// $('.wrapper').addClass('form-success');
+	// 	var DengLutrans = setTimeout($(location).attr('href', 'index.html'),20000);
+	// 	clearInterval(DengLutrans);
+	});
+</script>
+
+</body>
+</html>
